@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\AllUser;
 
 class Pagescontroller extends Controller
 {
@@ -43,6 +44,7 @@ class Pagescontroller extends Controller
     function profile(){
         return view('admin.pages.profile');
     }
+ 
 
 
 }

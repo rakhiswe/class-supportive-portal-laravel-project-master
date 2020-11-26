@@ -20,6 +20,10 @@ class Teacherpagescontroller extends Controller
     function blog(){
         return view('teacher.pages.blog');
     }
+    function createblog(){
+        return view('teacher.pages.createblog');
+    }
+
     function notice(){
         return view('teacher.pages.notice');
     }

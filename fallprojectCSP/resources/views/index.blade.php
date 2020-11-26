@@ -98,7 +98,7 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>Varsity</span></a>
+          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>CSP</span></a>
           <!-- IMG BASED LOGO  -->
           <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
         </div>
@@ -150,7 +150,7 @@
       <div class="mu-slider-content">
         <h4>Welcome To Varsity</h4>
         <span></span>
-        <h2>We Will Help You To Learn</h2>
+        <h2>Class Supportive Portal</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
         <a href="#" class="mu-read-more-btn">Read More</a>
       </div>

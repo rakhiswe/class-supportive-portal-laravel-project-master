@@ -55,12 +55,7 @@
                 <span class="nav-link-text">Manage Teachers</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Manage Blog</span>
-              </a>
-            </li>
+           
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.courses')}}">
                 <i class="ni ni-single-02 text-yellow"></i>

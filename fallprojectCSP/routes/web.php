@@ -24,6 +24,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 });
 
+
 Route::group(['prefix'=>'admin/students'],function(){
     
 
@@ -34,6 +35,7 @@ Route::group(['prefix'=>'admin/students'],function(){
 Route::group(['prefix'=>'admin/teachers'],function(){
     Route::get('/','Pagescontroller@teachers')->name('admin.teachers');
     Route::get('/create','Pagescontroller@createteacher')->name('admin.createteacher');
+    Route::post('/create','TeacherController@CreateTeacher')->name('admin.teachers.createteacher');
 });
 
 Route::group(['prefix'=>'admin/courses'],function(){
@@ -47,9 +49,14 @@ Route::group(['prefix'=>'admin/courses'],function(){
 Route::group(['prefix'=>'teacher'],function(){
     Route::get('/','Teacherpagescontroller@index')->name('teacher.dashboard');
     Route::get('/profile','Teacherpagescontroller@profile')->name('teacher.profile');
-    Route::get('/blog','Teacherpagescontroller@blog')->name('teacher.blog');
+  
     Route::get('/request','Teacherpagescontroller@request')->name('teacher.request');
     Route::get('/notice','Teacherpagescontroller@notice')->name('teacher.notice');
+});
+
+Route::group(['prefix'=>'teacher/blog'],function(){
+    Route::get('/','Teacherpagescontroller@blog')->name('teacher.blog');
+    Route::get('/createblog','Teacherpagescontroller@createblog')->name('teacher.createblog');
 });
 
 
