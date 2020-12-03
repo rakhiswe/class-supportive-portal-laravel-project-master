@@ -14,22 +14,25 @@
                 </div>
               </div>
             </div>
+
+                
+     
             <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="{{route('admin.teachers.createteacher')}}">
-              {{ csrf_field() }}
+            <form method="POST" enctype="multipart/form-data" action="{{route('admin.students.updatestudent',$student[0]->id)}}">
+             {{ csrf_field() }}
               <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-username">Teacher ID</label>
-                        <input type="text" name="teacherid" id="input-username" class="form-control" placeholder="Teacher Id" >
+                        <label class="form-control-label" for="input-username">Student ID</label>
+                      <input type="text" name="studentid" id="input-username" class="form-control" value="{{$student[0]->official_id}}"  placeholder="Teacher Id" >
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" name="email" id="input-email" class="form-control" placeholder="jesse@diu.edu.bd">
+                        <input type="email" name="email" id="input-email" class="form-control" value="{{$student[0]->email}}"placeholder="jesse@diu.edu.bd">
                       </div>
                     </div>
                   </div>
@@ -37,19 +40,19 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Full name</label>
-                        <input type="text" name="name" id="input-first-name" class="form-control" placeholder=" Full name" >
+                        <input type="text" name="name" id="input-first-name" class="form-control"value="{{$student[0]->name}}" placeholder=" Full name" >
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-last-name">Password</label>
-                        <input type="password" name="password" id="input-last-name" class="form-control" placeholder="Password" >
+                        <input type="password" name="password" id="input-last-name" class="form-control" value="{{$student[0]->password}}"placeholder="Password" >
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Photo</label>
-                        <input type="file" name="photo" id="input-first-name" class="form-control" placeholder=" Photo " >
+                        <input type="file" name="photo" id="input-first-name" class="form-control"value="{{$student[0]->photo}}" placeholder=" Photo " >
                       </div>
                     </div>
                   </div>
@@ -65,7 +68,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Mobile Number</label>
-                        <input id="input-address" name="number" class="form-control" placeholder="Mobile Number"  type="text">
+                        <input id="input-address" name="number" class="form-control" value="{{$student[0]->number}}" placeholder="Mobile Number"  type="text">
                       </div>
                     </div>
                   </div>
@@ -76,9 +79,11 @@
                    
                
               </form>
+          
             </div>
           </div>
         </div>
       </div>
+
 
       @endsection

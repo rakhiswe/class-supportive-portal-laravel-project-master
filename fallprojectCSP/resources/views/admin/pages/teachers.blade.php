@@ -4,14 +4,14 @@
 
 <div class="container">
 <div class="col-lg-12 mt-3 col-5 text-right">
-              <a href="{{route('admin.createteacher')}}" class="btn btn-sm btn-neutral">New</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+              <a href="{{route('admin.createteacher')}}" class="btn btn-lg btn-success">Add Teacher</a>
+             
             </div>
 	<div class="row">
 		
         
         <div class="col-md-12">
-        <h4>Bootstrap Snipp for Datatable</h4>
+        <h1>Teachers List</h1>
         <div class="table-responsive">
 
                 
@@ -19,79 +19,35 @@
                    
                    <thead>
                    
-                   <th><input type="checkbox" id="checkall" /></th>
-                   <th>First Name</th>
-                    <th>Last Name</th>
-                     <th>Address</th>
-                     <th>Email</th>
-                     <th>Contact</th>
-                      <th>Edit</th>
+                 
+                   <th>Teacher ID</th>
+                    <th>Email</th>
+                     <th>Full Name</th>
+                  
+                     <th>Photo</th>
+                      <th>Mobile Number</th>
                       
-                       <th>Delete</th>
+                   <th>Action</th>
                    </thead>
     <tbody>
+
+      @foreach ($allteacher as $allteacher)
+          
+      
     
     <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    
+    <td>{{$allteacher->official_id}}</td>
+    <td>{{$allteacher->email}}</td>
+    <td>{{$allteacher->name}}</td>
+    <td><img src="{{asset('images/'.$allteacher->photo)}}" width="100" alt=""></td>
+    <td>{{$allteacher->number}}</td>
+    <td><a href="{{route('admin.teachers.editteacher', $allteacher->id)}}" class="btn-sm btn-success" >edit</a>
+    <a href="{{route('admin.teachers.deleteteacher', $allteacher->id)}}" class="btn-sm btn-danger">Delete</a>
+    </td>
     </tr>
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-   
-    
+    @endforeach
+
    
     
     </tbody>

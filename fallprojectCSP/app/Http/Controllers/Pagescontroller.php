@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AllUser;
+use App\course;
+
 
 class Pagescontroller extends Controller
 {
@@ -11,7 +13,12 @@ class Pagescontroller extends Controller
         return view('index');
     }
     function dashboard(){
-        return view('admin.pages.dashboard');
+        $totalstudent = AllUser::orderBy('id','desc')->where('type','student')->get();
+      //  $a = $totalstudent.length();
+      $totalteacher = AllUser::orderBy('id','desc')->where('type','teacher')->get();
+      $totalcourse = course::orderBy('id','desc')->get();
+
+        return view('admin.pages.dashboard')->with(compact('totalstudent','totalteacher','totalcourse'));
     }
     function login(){
         return view('login');
@@ -20,20 +27,26 @@ class Pagescontroller extends Controller
         return view('admin.pages.createstudent');
     }
     function students(){
-        return view('admin.pages.students');
+        $allstudent = AllUser::orderBy('id','desc')->where('type','student')->get();
+        return view('admin.pages.students',compact('allstudent'));
 
     }
     function teachers(){
-        return view('admin.pages.teachers');
+
+        $allteacher = AllUser::orderBy('id','desc')->where('type','teacher')->get();
+
+        return view('admin.pages.teachers',compact('allteacher'));
 
     }
+   
 
     function createteacher(){
         return view('admin.pages.createteacher');
     }
 
     function courses(){
-        return view('admin.pages.courses');
+        $allcourse = course::orderBy('id','desc')->get();
+        return view('admin.pages.courses',compact('allcourse'));
 
     }
 

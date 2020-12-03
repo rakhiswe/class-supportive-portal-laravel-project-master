@@ -12,14 +12,14 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
   <!-- Favicon -->
-  <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="{{asset('assets/img/brand/favicon.png')}}" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="{{asset('assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="{{asset('assets/css/argon.css?v=1.2.0')}}" type="text/css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="../../assets/img/brand/csp.png"  class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -39,38 +39,38 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.dashboard')}}">
-                <i class="ni ni-tv-2 text-primary"></i>
+                <i class="ni ni-shop text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.profile')}}">
-                <i class="ni ni-tv-2 text-primary"></i>
+                <i class="ni ni-circle-08 text-primary"></i>
                 <span class="nav-link-text">Profile</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.teachers')}}">
-                <i class="ni ni-planet text-orange"></i>
+                <i class="ni ni-single-02 text-orange"></i>
                 <span class="nav-link-text">Manage Teachers</span>
               </a>
             </li>
            
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.courses')}}">
-                <i class="ni ni-single-02 text-yellow"></i>
+                <i class="ni ni-book-bookmark text-yellow"></i>
                 <span class="nav-link-text">Manage Course</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="tables.html">
-                <i class="ni ni-bullet-list-67 text-default"></i>
+                <i class="ni ni-collection text-default"></i>
                 <span class="nav-link-text">Assign Teachers</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.students')}}">
-                <i class="ni ni-key-25 text-info"></i>
+                <i class="ni ni-badge text-info"></i>
                 <span class="nav-link-text">Manage Students</span>
               </a>
             </li>
