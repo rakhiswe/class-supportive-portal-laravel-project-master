@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AllUser;
+use App\course;
+use App\assignteacher;
 use Image;
 use File;
+use Validator;
 
 class TeacherController extends Controller
 {
@@ -34,6 +37,8 @@ class TeacherController extends Controller
         $user->official_id=$request->teacherid;
         $user->type='teacher';
         $user->save();
+
+        session()->flash('success','A New Teacher Added Successfully');
 
         return redirect()->route('admin.teachers');
         
@@ -86,6 +91,10 @@ class TeacherController extends Controller
         $teacher->type='teacher';
         $teacher->save();
 
+   
+
+       
+
         return redirect()->route('admin.teachers');
 
     }
@@ -95,6 +104,18 @@ class TeacherController extends Controller
 
 // Student module
     function CreateStudent(Request $request){
+
+        $validation = Validator::make($request->all(),[
+            'name'=>'required | min:5',
+            'email'=> 'required |unique:all_users,email',
+            'password'=>'required|min:6',
+            'number'=>'required|numeric|min:11',
+        ]);
+
+        if($validation->fails()){
+            return redirect()
+            ->route('admin.createstudent')->with('errors',$validation->errors());
+        }
 
         $user = new AllUser;
         $user->name=$request->name;
@@ -114,6 +135,10 @@ class TeacherController extends Controller
         $user->photo=$img;
         $user->type='student';
         $user->save();
+
+        session()->flash('success','A New Student Added Successfully');
+
+      
 
         return redirect()->route('admin.students');
         
@@ -167,9 +192,36 @@ class TeacherController extends Controller
     }
 
 
+//assignteacher feature
+    
+    function createassignteacher(){
+
+        $allcourse = course::orderBy('id','desc')->get();
+        $allteacher = AllUser::orderBy('id','desc')->where('type','teacher')->get();
+
+        return view('admin.pages.createassignteacher',compact('allcourse','allteacher'));
+    }
+
+    function SubmitAssignTeacher(Request $request){
+
+        $assign = new assignteacher;
+        $assign->course_id=$request->courseid;
+        $assign->teacher_id=$request->teacherid;
+        $assign->section=$request->section;
+     
+       
+
+    
+        $assign->save();
+
+        session()->flash('success','A New Teacher has been Assigned');
+
+      
+
+        return redirect()->route('admin.assignteacher');
 
 
-
+    }
     
     
 }

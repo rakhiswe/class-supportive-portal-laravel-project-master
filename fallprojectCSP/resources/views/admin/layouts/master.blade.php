@@ -63,7 +63,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tables.html">
+              <a class="nav-link" href="{{route('admin.assignteacher')}}">
                 <i class="ni ni-collection text-default"></i>
                 <span class="nav-link-text">Assign Teachers</span>
               </a>
@@ -280,10 +280,10 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                    <img alt="Image placeholder" src="{{asset('images/'.session('photo'))}}">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{session('name')}}</span>
                   </div>
                 </div>
               </a>
@@ -307,8 +307,8 @@
                   <i class="ni ni-support-16"></i>
                   <span>Support</span>
                 </a>
-                <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <div class="dropdown-divider"></div> 
+              <a href="{{route('logout')}}" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>

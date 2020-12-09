@@ -27,7 +27,7 @@
                 <div class="row">
                   <div class="col">
                     <h5 class="card-title text-uppercase text-muted mb-0">Total Teachers</h5>
-                    <span class="h2 font-weight-bold mb-0">     {{$totalteacher->count()}} </span>
+                    <span class="h2 font-weight-bold mb-0">  {{$totalteacher->count()}} </span>
                   </div>
                   <div class="col-auto">
                     <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -96,5 +96,6 @@
       </div>
     </div>
   </div>
+  <h1>hhhhh</h1>
 
 @endsection

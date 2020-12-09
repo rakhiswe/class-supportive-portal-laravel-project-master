@@ -8,7 +8,11 @@
              
             </div>
 	<div class="row">
-		
+    @if(session('success'))
+    <div class="alert alert-success ml-4">
+      {{session('success')}}
+    </div>
+    @endif
         
         <div class="col-md-12">
         <h1>Teachers List</h1>
@@ -127,4 +131,4 @@
     </div>
 
 
-@endsection;
+@endsection

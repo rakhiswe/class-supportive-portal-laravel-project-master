@@ -109,6 +109,13 @@
               <div class="text-center text-muted mb-4">
                 <small>Or sign in with credentials</small>
               </div>
+
+              @if(session('msg'))
+              <div class="alert alert-warning">
+                 {{session('msg')}}
+              </div>
+              @endif
+
               <form role="form" method="post">
                 {{ csrf_field() }}
                 <div class="form-group mb-3">

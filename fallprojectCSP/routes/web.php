@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','Pagescontroller@index')->name('index');
 Route::get('/login','Pagescontroller@login')->name('login');
-Route::post('/login','LoginController@login');
+Route::post('/login','LoginController@login')->name('login');
+Route::get('/logout','LogoutController@logout')->name('logout');
 
+Route::group(['middleware'=>['isadmin']],function(){
+
+    
 // admin route
 Route::group(['prefix'=>'admin'],function(){
 
@@ -55,6 +59,21 @@ Route::group(['prefix'=>'admin/courses'],function(){
     Route::post('/edit/{id}','CourseController@UpdateCourse')->name('admin.courses.updatecourse');
 });
 
+Route::group(['prefix'=>'admin/assignteachers'],function(){
+    Route::get('/','Pagescontroller@assignteacher')->name('admin.assignteacher');
+    Route::get('/create','TeacherController@createassignteacher')->name('admin.createassignteacher');
+    Route::post('/create','TeacherController@submitassignteacher')->name('admin.submitassignteacher');
+
+
+});
+
+
+
+
+});
+
+Route::group(['middleware'=>['isteacher']],function(){
+
 // teacher route
 
 
@@ -70,7 +89,7 @@ Route::group(['prefix'=>'teacher/blog'],function(){
     Route::get('/','Teacherpagescontroller@blog')->name('teacher.blog');
     Route::get('/createblog','Teacherpagescontroller@createblog')->name('teacher.createblog');
 });
-
+});
 
 // studentr route
 

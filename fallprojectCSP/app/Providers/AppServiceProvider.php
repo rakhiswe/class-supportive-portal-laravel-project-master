@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use View;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+       
+        
+        View::composer('admin.layouts.master',function($view){
+            $a="badhon ghosh";
+            $view->with('name',$a);
+        });
     }
 }

@@ -30,6 +30,8 @@ class CourseController extends Controller
             $course->course_cover=$img;
             $course->save();
 
+            session()->flash('success','A New Course Added Successfully');
+
             return redirect()->route('admin.courses');
 
     }

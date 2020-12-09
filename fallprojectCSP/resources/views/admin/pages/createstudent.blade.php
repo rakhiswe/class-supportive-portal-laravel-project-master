@@ -7,14 +7,17 @@
     <div class="card-header">
       <div class="row align-items-center">
         <div class="col-8">
-          <h3 class="mb-0">Add Teachers </h3>
+          <h3 class="mb-0">Add Student </h3>
         </div>
-        <div class="col-4 text-right">
-          <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-        </div>
+       
       </div>
     </div>
     <div class="card-body">
+      @foreach($errors->all() as $err)
+      <div class="alert alert-warning">
+         {{$err}}
+      </div>
+      @endforeach
     <form method="POST" enctype="multipart/form-data" action="{{route('admin.students.createstudent')}}">
       {{ csrf_field() }}
       <h6 class="heading-small text-muted mb-4">User information</h6>

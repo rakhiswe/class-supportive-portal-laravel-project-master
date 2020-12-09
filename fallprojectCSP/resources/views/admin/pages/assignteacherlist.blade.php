@@ -4,58 +4,57 @@
 
 <div class="container">
 <div class="col-lg-12 mt-3 col-5 text-right">
-              <a href="{{route('admin.createstudent')}}" class="btn btn-lg btn-success">Add Student</a>
-            
+              <a href="{{route('admin.createassignteacher')}}" class="btn btn-lg btn-success">Assign Teacher</a>
+         
             </div>
 	<div class="row">
-		
     @if(session('success'))
     <div class="alert alert-success ml-4">
       {{session('success')}}
     </div>
     @endif
+		
+        
         <div class="col-md-12">
-        <h1>Students List</h1>
+        <h1> List</h1>
         <div class="table-responsive">
 
                 
-          <table id="mytable" class="table table-bordred table-striped">
+              <table id="mytable" class="table table-bordred table-striped">
                    
-            <thead>
-            
+                   <thead>
+                   
+                    
+                   <th>Teacher ID</th>
+                   
+                     <th>Course ID</th>
+                     <th>Section</th>
+                     
+                      <th>Action</th>
+                   </thead>
+    <tbody>
+
+      @foreach ($course as $course)
+    
+    <tr>
+
+    <td>{{$course->teacher_id}}</td>
+    <td>{{$course->course_id}}</td>
+    <td>{{$course->section}}</td>
+     
           
-            <th>Student ID</th>
-             <th>Email</th>
-              <th>Full Name</th>
-           
-              <th>Photo</th>
-               <th>Mobile Number</th>
-               
-                <th>Action</th>
-            </thead>
-<tbody>
-
-@foreach ($allstudent as $allstudent)
+    
+    
    
+    <td><a href="" class="btn-sm btn-success" >edit</a>
+      <a href="" class="btn-sm btn-danger">Delete</a>
+      </td>
+    </tr>
+    @endforeach
 
-
-<tr>
-
-<td>{{$allstudent->official_id}}</td>
-<td>{{$allstudent->email}}</td>
-<td>{{$allstudent->name}}</td>
-<td><img src="{{asset('images/'.$allstudent->photo)}}" width="100" alt=""></td>
-<td>{{$allstudent->number}}</td>
-<td><a href="{{route('admin.students.editstudent', $allstudent->id)}}" class="btn-sm btn-success" >edit</a>
-<a href="{{route('admin.students.deletestudent', $allstudent->id)}}" class="btn-sm btn-danger">Delete</a>
-</td>
-</tr>
-@endforeach
-
-
-
-</tbody>
- 
+    
+    </tbody>
+        
 </table>
 
 <div class="clearfix"></div>
