@@ -13,6 +13,18 @@ use Validator;
 class TeacherController extends Controller
 {
     function CreateTeacher(Request $request){
+        $validation = Validator::make($request->all(),[
+            'name'=>'required | min:5',
+            'email'=> 'required |unique:all_users,email',
+            'password'=>'required|min:6',
+            'number'=>'required|numeric|min:11',
+        ]);
+
+        if($validation->fails()){
+            return redirect()
+            ->route('admin.createstudent')->with('errors',$validation->errors());
+        }
+
 
         $user = new AllUser;
         $user->name=$request->name;
@@ -220,6 +232,15 @@ class TeacherController extends Controller
 
         return redirect()->route('admin.assignteacher');
 
+
+    }
+
+    function DeleteAssignTeacher($id){
+        $assign = assignteacher::where('id',$id);
+        $assign->delete();
+
+         session()->flash('success','Delete Successfully');
+        return redirect()->route('admin.assignteacher');
 
     }
     

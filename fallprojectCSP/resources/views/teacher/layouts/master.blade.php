@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Admin</title>
+  <title>Teacher</title>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="../../assets/css/argon.css?v=1.2.0" type="text/css">
+  @yield('css')
 </head>
 
 <body>
@@ -29,7 +30,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="../../assets/img/brand/csp.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -39,31 +40,31 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="{{route('teacher.dashboard')}}">
-                <i class="ni ni-tv-2 text-primary"></i>
+                <i class="ni ni-shop text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('teacher.profile')}}">
-                <i class="ni ni-planet text-orange"></i>
+                <i class="ni ni-circle-08 text-primary"></i>
                 <span class="nav-link-text">Profile</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('teacher.blog')}}">
-                <i class="ni ni-pin-3 text-primary"></i>
+                <i class="ni ni-book-bookmark text-blue"></i>
                 <span class="nav-link-text">Manage Blog</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('teacher.notice')}}">
-                <i class="ni ni-single-02 text-yellow"></i>
+                <i class="ni ni-ruler-pencil text-blue"></i>
                 <span class="nav-link-text">Notice</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('teacher.request')}}">
-                <i class="ni ni-bullet-list-67 text-default"></i>
+                <i class="ni ni-check-bold text-blue"></i>
                 <span class="nav-link-text">Students Request</span>
               </a>
             </li>
@@ -82,19 +83,7 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Search form -->
-          <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
-            <div class="form-group mb-0">
-              <div class="input-group input-group-alternative input-group-merge">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-search"></i></span>
-                </div>
-                <input class="form-control" placeholder="Search" type="text">
-              </div>
-            </div>
-            <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </form>
+        
           <!-- Navbar links -->
           <ul class="navbar-nav align-items-center  ml-md-auto ">
             <li class="nav-item d-xl-none">
@@ -274,35 +263,17 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                  <img alt="Image placeholder" src="{{asset('images/'.session('photo'))}}">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{session('name')}}</span>
                   </div>
                 </div>
               </a>
               <div class="dropdown-menu  dropdown-menu-right ">
-                <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow m-0">Welcome!</h6>
-                </div>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-single-02"></i>
-                  <span>My profile</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Settings</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-calendar-grid-58"></i>
-                  <span>Activity</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-support-16"></i>
-                  <span>Support</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                
+                
+              <a href="{{route('logout')}}" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>
@@ -338,6 +309,7 @@
   <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  @stack('scripts')
 </body>
 
 </html>

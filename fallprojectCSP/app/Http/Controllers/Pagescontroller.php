@@ -6,12 +6,20 @@ use App\AllUser;
 use App\course;
 use App\assignteacher;
 use View;
+use App\Blog;
 
 
 class Pagescontroller extends Controller
 {
     function index(){
-        return view('index');
+
+        $allcourse = course::orderBy('id','desc')->get();
+        $course = course::orderBy('id','desc')->take(4)->get();
+        $totalstudent = AllUser::orderBy('id','desc')->where('type','student')->get();
+        $totalteacher = AllUser::orderBy('id','desc')->where('type','teacher')->get();
+        $blog = Blog::take(4)->get();
+
+        return view('index',compact('allcourse','totalstudent','totalteacher','course','blog'));
     }
     function dashboard(Request $request){
 
@@ -68,15 +76,31 @@ return view('admin.pages.dashboard')->with(compact('totalstudent','totalteacher'
     }
 
     function profile(){
-        return view('admin.pages.profile');
+        $profile = AllUser::where('id',session('uid'))->get();
+        return view('admin.pages.profile', compact('profile'));
     }
  
     function assignteacher(){
-        $course = assignteacher::orderBy('id','desc')->get();
+        $course = assignteacher::join('courses','courses.id','=','assignteachers.course_id')
+        ->join('all_users','all_users.id','=','assignteachers.teacher_id')
+        ->select('assignteachers.id as aid','assignteachers.*','courses.*','all_users.*')->get();
         //$id->course_id;
        // $course=course::where('id',$id[0]->course_id)->get();
 
         return view('admin.pages.assignteacherlist',compact('course'));
+    }
+    function profileupdate(Request $request){
+        
+        $user = AllUser::find($request->id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->number=$request->number;
+        $user->official_id=$request->teacherid;
+        $user->save();
+
+        session()->flash('rakhi','profile updated');
+        return redirect()->route('admin.profile');
     }
 
 

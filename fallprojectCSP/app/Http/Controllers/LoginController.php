@@ -27,12 +27,18 @@ class LoginController extends Controller
     
            }
            else if($user[0]->type == 'teacher'){
-            
+            $request->session()->put('id',$user[0]->id);
+            $request->session()->put('name',$user[0]->name);
+            $request->session()->put('photo',$user[0]->photo);
             $request->session()->put('type',$user[0]->type);
             return redirect('teacher');
     
            }
            else if($user[0]->type == 'student'){
+            $request->session()->put('id',$user[0]->id);
+            $request->session()->put('name',$user[0]->name);
+            $request->session()->put('photo',$user[0]->photo);
+            $request->session()->put('type',$user[0]->type);
     
             return redirect('student');
     

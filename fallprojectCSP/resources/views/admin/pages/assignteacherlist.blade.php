@@ -1,5 +1,11 @@
 @extends('admin.layouts.master')
 
+@section('css')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -25,9 +31,9 @@
                    <thead>
                    
                     
-                   <th>Teacher ID</th>
+                   <th>Teacher Name</th>
                    
-                     <th>Course ID</th>
+                     <th>Course Name</th>
                      <th>Section</th>
                      
                       <th>Action</th>
@@ -38,8 +44,8 @@
     
     <tr>
 
-    <td>{{$course->teacher_id}}</td>
-    <td>{{$course->course_id}}</td>
+    <td>{{$course->name}}</td>
+    <td>{{$course->course_name}}</td>
     <td>{{$course->section}}</td>
      
           
@@ -47,7 +53,7 @@
     
    
     <td><a href="" class="btn-sm btn-success" >edit</a>
-      <a href="" class="btn-sm btn-danger">Delete</a>
+      <a href="{{route('admin.assignteacherlist.deleteassignteacher', $course->aid)}}" class="btn-sm btn-danger">Delete</a>
       </td>
     </tr>
     @endforeach
@@ -58,15 +64,7 @@
 </table>
 
 <div class="clearfix"></div>
-<ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-</ul>
+
                 
             </div>
             
@@ -131,3 +129,18 @@
 
 
 @endsection
+@push('scripts')
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+   
+
+    <script>
+      $(document).ready( function () {
+    $('#mytable').DataTable( {
+      
+      
+         
+             
+    } );
+} );
+    </script>
+@endpush

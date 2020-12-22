@@ -3,27 +3,101 @@
 @section('content')
 
 <div class="container">
+    <div class="col-md-4 mt-3 ml-2">
+        <h4>Select Course & Section</h4>
+
+        <form method="get" action="">
+    <select class="course form-control" name="coursename" >
+        @foreach ($course as $course)
+            
+        
+                
+                <option value="{{$course->course_name.$course->section}}" >{{$course->course_name}} [Section: {{$course->section}}]</option>
+
+      @endforeach
+
+    </select>
+    
+</form>
+</div>
+</div>
+<br><hr>
+
+<div class="container">
+
     <div class="col-md-12">
-        <h1>Alice in Wonderland, part dos</h1>
-        <p>'You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words:
-        'Yes, we went to school in the sea, though you mayn't believe it—'
-        'I never said I didn't!' interrupted Alice.
-        'You did,' said the Mock Turtle.</p>
-        <div>
-    <span class="badge">Posted 2012-08-02 20:47:04</span><div class="pull-right"><span class="label label-default">alice</span> <span class="label label-primary">story</span> <span class="label label-success">blog</span> <span class="label label-info">personal</span> <span class="label label-warning">Warning</span>
-    <span class="label label-danger">Danger</span></div>         
-         </div>
+
+        <div class="notice">
+
+      
+        @foreach ($notice as $n)
+            
+        
+        <h1>{{$n->title}}</h1>
+        <p>{{$n->details}}</p>
+        <p style="color:blue;">Posted By : {{$n->name}}</p>
+        <p style="color:red;">Time: {{$n->time}}</p>
         <hr>
-        <h1>Revolution has begun!</h1>
-        <p>'I am bound to Tahiti for more men.'
-            'Very good. Let me board you a moment—I come in peace.' With that he leaped from the canoe, swam to the boat; and climbing the gunwale, stood face to face with the captain.
-            'Cross your arms, sir; throw back your head. Now, repeat after me. As soon as Steelkilt leaves me, I swear to beach this boat on yonder island, and remain there six days. If I do not, may lightning strike me!'A pretty scholar,' laughed the Lakeman. 'Adios, Senor!' and leaping into the sea, he swam back to his comrades.</p>
-        <div>
-            <span class="badge">Posted 2012-08-02 20:47:04</span><div class="pull-right"><span class="label label-default">alice</span> <span class="label label-primary">story</span> <span class="label label-success">blog</span> <span class="label label-info">personal</span> <span class="label label-warning">Warning</span>
-    <span class="label label-danger">Danger</span></div>
-        </div>     
+
+        @endforeach
+        
+    
         <hr>
+       
+       
     </div>
+</div>
+
+
     </div>
+
+
+    <script>
+        $(document).ready(function(){
+
+
+            $(document).on('change','.course',function(){
+
+var course = $(this).val();
+
+
+console.log('Raakhkihi->',course);
+
+
+$('.notice').empty();
+$.ajax({
+
+    type:'get',
+    url: "{{ url('/student/findnotice') }}",
+    data:{'course':course },
+    dataType:'json',
+    success:function(data){
+
+        console.log(data);
+        
+
+      
+        $.each(data, function(key, value) {
+
+$('.notice').append('<h1>'+ value.title +'</h1><p>'+value.details+'</p><p style="color:blue;">Posted By : '+value.name+'</p> <p style="color:red;">Time: '+value.time+'</p><hr>');
+});
+
+        
+        
+       
+    }
+    
+   
+
+});
+
+
+
+    });
+
+
+
+        })
+    </script>
     
 @endsection

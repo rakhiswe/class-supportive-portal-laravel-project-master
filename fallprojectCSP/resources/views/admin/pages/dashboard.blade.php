@@ -31,7 +31,7 @@
                   </div>
                   <div class="col-auto">
                     <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                      <i class="ni ni-active-40"></i>
+                      <i class="ni ni-single-02"></i>
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
                   </div>
                   <div class="col-auto">
                     <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                      <i class="ni ni-chart-pie-35"></i>
+                      <i class="ni ni-hat-3"></i>
                     </div>
                   </div>
                 </div>
@@ -79,7 +79,7 @@
                   </div>
                   <div class="col-auto">
                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                      <i class="ni ni-money-coins"></i>
+                      <i class="ni ni-book-bookmark"></i>
                     </div>
                   </div>
                 </div>
